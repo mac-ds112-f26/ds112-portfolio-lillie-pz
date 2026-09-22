@@ -25,12 +25,12 @@ head(hikes)
 
 a.  What features would we like a visualization of the *categorical* difficulty `rating` variable to capture?
 
->the rating of each mountain, and the name of the mountain.
-These help us fit the moutians into categories
+> the rating of each mountain, and the name of the mountain.
+> These help us fit the moutians into categories
 
 b.  What about a visualization of the *quantitative* `elevation` variable?
 
->A quantitative visualzation would be like the elevation, and the time it takes to climb the mountians.
+> A quantitative visualzation would be like the elevation, and the time it takes to climb the mountians.
 
 ## Exercise 2: Load tidyverse
 
@@ -58,11 +58,11 @@ Consider some specific research questions about the difficulty `rating` of the h
 
 1.  How many hikes fall into each category?
 
->8 of them are easy, 11 of them are medium and 26 of them are difficult
+> 8 of them are easy, 11 of them are medium and 26 of them are difficult
 
 2.  Are the hikes evenly distributed among these categories, or are some more common than others?
 
->there are more difficult mountains and less easier mountains.
+> there are more difficult mountains and less easier mountains.
 
 All of these questions can be answered with: (1) a **bar chart**; of (2) the *categorical* data recorded in the `rating` column.
 First, set up the plotting **frame**:
@@ -132,19 +132,19 @@ Reflect on the `ggplot()` code.
 
 - What's the purpose of the `+`? When do we use it?
 
->to continue what you want to do in your code easier
+> to continue what you want to do in your code easier
 
 - We added the bars using `geom_bar()`? Why "geom"?
 
->geometrical bar and it adds layers to make a visual graph
+> geometrical bar and it adds layers to make a visual graph
 
 - What does `labs()` stand for?
 
->this stands for labels on the graph 
+> this stands for labels on the graph
 
 - What's the difference between `color` and `fill`?
 
->color is the boarder color of the graph and fill is the filled in color of the visual
+> color is the boarder color of the graph and fill is the filled in color of the visual
 
 #### Part b
 
@@ -152,24 +152,25 @@ In general, bar charts allow us to examine the following properties of a *catego
 
 - **observed categories**: What categories did we observe?
 
->the categories we observed are: diffucult easy and moderate
+> the categories we observed are: diffucult easy and moderate
 
 - **variability between categories**: Are observations evenly spread out among the categories, or are some categories more common than others?
 
->no, the observations are not evenly distributed as there tend to be more moderatly rated hikes as shown, and there are less dated as diffucult and easy. 
+> no, the observations are not evenly distributed as there tend to be more moderatly rated hikes as shown, and there are less dated as diffucult and easy.
 
 We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks.
 Summarize below what you learned from the bar chart, in context.
 
->From the graph, we can learn that there are more then 25 people who rated their hikes as moderate, and there are less then half of that amount of people who rated the hike as easy. And a lower number of people who rated the hike as diffucult.  
-
+> From the graph, we can learn that there are more then 25 people who rated their hikes as moderate, and there are less then half of that amount of people who rated the hike as easy.
+> And a lower number of people who rated the hike as diffucult.
 
 #### Part c
 
 Is there anything you don't like about this barplot?
 For example: check out the x-axis again.
 
->the x axsis is not in order from easy, moderate, difficult. To make the graph more conscise it would be better to put them in order. 
+> the x axsis is not in order from easy, moderate, difficult.
+> To make the graph more conscise it would be better to put them in order.
 
 ## Exercise 6: Sad Bar Chart
 
@@ -184,7 +185,8 @@ Here:
 - Construct a **bar chart** of the *quantitative* `elevation` variable.
 - Explain why this might *not* be an effective visualization for this and other quantitative variables. (What questions does / doesn't it help answer?)
 
->this might not be a great graph to look at because its hard to desipsher where the averages of the hikes are. It makes it diffucult to answer the question and to find the range of how the hikes are distributed. 
+> this might not be a great graph to look at because its hard to desipsher where the averages of the hikes are.
+> It makes it diffucult to answer the question and to find the range of how the hikes are distributed.
 
 ```{r}
 ggplot(hikes, aes(x=elevation))+
@@ -211,7 +213,7 @@ Let's dig into some details.
 
 - How many hikes have an elevation between 4500 and 4700 feet?
 
-> approximately 13 hikes have an elevation between 4500 and 4700ft  
+> approximately 13 hikes have an elevation between 4500 and 4700ft
 
 - How many total hikes have an elevation of at least 5100 feet?
 

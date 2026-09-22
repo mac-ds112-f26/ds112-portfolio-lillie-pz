@@ -206,10 +206,15 @@ To examine how the 2020 results are related to some county demographics, constru
 ```{r}
 # Scatterplot of repub_pct_20 vs median_rent
 
-
+ggplot(elections, aes(y = repub_pct_20, x = median_rent)) +
+  geom_point() +
+  geom_smooth()
 
 # Scatterplot of repub_pct_20 vs median_age
 
+ggplot(elections, aes(y = repub_pct_20, x = median_age)) +
+  geom_point() +
+  geom_smooth()
 
 ```
 
@@ -219,8 +224,9 @@ To examine how the 2020 results are related to some county demographics, constru
 Next, let's explore the relationship between a county's 2020 Republican support `repub_pct_20` and the `historical` political trends in its state. In this case `repub_pct_20` is **quantitative**, but `historical` is **categorical**. Explain why a scatterplot might *not* be an effective visualization for exploring this relationship. (What questions does / doesn't it help answer?)
 
 ```{r}
-ggplot(elections, aes(y = repub_pct_20, x = historical)) +
-  geom_point()
+
+
+# 
 ```
 
 
