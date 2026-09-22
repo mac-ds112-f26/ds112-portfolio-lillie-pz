@@ -38,6 +38,12 @@ We'll use this data to explore voting outcomes within the U.S.'s 2-party system.
 
 
 
+```{r}
+# Load the package
+library(tidyverse)
+```
+
+
 ## Exercise 0: Review
 
 #### Part a
@@ -45,10 +51,17 @@ We'll use this data to explore voting outcomes within the U.S.'s 2-party system.
 How many, or roughly what percent, of the 3000+ counties did the Republican candidate win in 2020?
 
 -   Take a guess.
+
+# 40% of the countries had a republican candidate win
+
 -   Then make a plot of the `winner` variable.
+
 -   Then discuss what follow-up questions you might have (and that our data might help us answer).
 
 ```{r}
+
+ggplot(elections, aes(x =winner_20)) +
+         geom_bar(fill ="blue")
 
 ```
 
@@ -61,6 +74,9 @@ Notice that the distribution of Republican support from county to county is slig
 What follow-up questions do you have?
 
 ```{r}
+
+ggplot(elections, aes(x =repub_pct_20)) +
+  geom_density(fill = "blue")
 
 ```
 
@@ -87,6 +103,11 @@ Try to replicate this using `ggplot()`. Think:
 
 ```{r}
 
+elections |>
+ggplot(aes(y =repub_pct_16, x=repub_pct_20)) +
+  geom_point(size =2, shape=2) +
+  theme_minimal()
+
 ```
 
 
@@ -96,7 +117,7 @@ Run each chunk below to build up a a scatterplot of `repub_pct_20` vs `repub_pct
 
 ```{r}
 # Set up the plotting frame
-# How does this differ from the frame for our histogram of repub_pct_20 alone?
+# this graph does not have any plots on the graph, the code has not been told what kind of plot to make 
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
 ```
 
@@ -109,21 +130,21 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 
 ```{r}
 # Change the shape of the points
-# What happens if you change the shape to another number?
+# What happens if you change the shape to another number? The effect of changing the number changed the "dots" on the graph, and depending on the number imputed into the () it will change 
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
-  geom_point(shape = 3)
+  geom_point(shape = 5)
 ```
 
 ```{r}
 # Modify the code to make the points "orange"
-# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both.
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both. The effect of adding just the color does not really improve the visual of the graph. The fill command did absolutley nothing to change the graph. 
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
   geom_point()
 ```
 
 ```{r}
 # Add a layer that represents each county by the state it's in
-# Take note of the geom and the info it needs to run!
+# Take note of the geom and the info it needs to run! Okay! 
 ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
   geom_text(aes(label = state_abbr))
 ```
@@ -134,8 +155,16 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 Summarize the relationship between the Republican support in 2020 and 2016. Be sure to comment on:
 
 -   the strength of the relationship: weak/moderate/strong
+
+#the relationship is strong, there are no outliers and the grapg seems to be going in one direction.
+
 -   the direction of the relationship: positive/negative
+
+#positive, the graph is going up.
+
 -   outliers, ie, in what state do counties deviate from the national trend? Any ideas why this might be the case?
+
+#no, the counties do not seem to deviate from the national trend. This could be due to the "red" backround of the states. 
 
 
 ## Exercise 4: Visualizing Trend
@@ -153,6 +182,9 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 Construct a new plot that contains the model smooth but does *not* include the individual point glyphs.
 
 ```{r}
+
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_smooth(color ="green")
 
 ```
 
