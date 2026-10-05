@@ -61,7 +61,6 @@ Let's load [the data](../data/our_fave_places.csv) and map it!
 
 
 ```{r}
-#| eval: false
 
 fave_places <- read.csv("https://hash-mac.github.io/ds112site-f26/data/our_fave_places.csv")
 
@@ -69,16 +68,14 @@ fave_places <- read.csv("https://hash-mac.github.io/ds112site-f26/data/our_fave_
 head(fave_places)
 
 library(tidyverse)
+library(maps)
+library(ggthemes)
+library(leaflet)
+library(gplots)
+library(mosaic)
+library(RColorBrewer)
 ```
 
-```{r}
-#| echo: false
-
-fave_places <- read.csv("../data/our_fave_places.csv")
-
-# Check it out
-head(fave_places)
-```
 
 
 You can use a "two-finger scroll" to zoom in and out.
@@ -346,16 +343,16 @@ Adjust the code below to make the plot!
 Remove the `#` to run it.
 
 ```{r}
-# ggplot(___) + 
-#   geom___() + 
-#   geom___(
-#     data = ___,
-#     aes(x = ___, y = ___),
-#     alpha = 0.7,
-#     size = 0.2, 
-#     color = 'darkgreen'
-#   ) + 
-#   theme_map()
+ ggplot(midwest_boundaries) + 
+   geom_sf() + 
+   geom_point(
+     data = starbucks_midwest,
+     aes(x = Longitude, y = Latitude),
+     alpha = 0.7,
+     size = 0.2, 
+     color = 'darkgreen'
+   ) + 
+   theme_map()
 ```
 
 ### ✏️ Build Contour Maps
@@ -381,8 +378,8 @@ ggplot(cma_boundaries) +
 Now check out the contour map.
 
 ```{r}
-# What changed in the plot?
-# What changed in our code?!
+# the circles changed into waves, or bigger circles. 
+# there's a new density_2d added here. 
 ggplot(cma_boundaries) + 
   geom_sf() + 
   geom_density_2d(
@@ -601,6 +598,14 @@ Construct a county-level map of `median_rent`.
 
 ```{r}
 
+ggplot(elections_by_counties, aes(map_id = county_fips, fill = cut(median_rent, 5))) +
+  geom_map(map = county_map) +
+  scale_fill_manual(values = rev(brewer.pal(10, "RdBu")), name = "% Republican") +
+  expand_limits(x = county_map$long, y = county_map$lat) +
+  theme_map() +
+  theme(legend.position = "right") + 
+  coord_equal()
+
 ```
 
 
@@ -609,6 +614,14 @@ Construct a county-level map of `median_rent`.
 Construct a county-level map of `median_age`.
 
 ```{r}
+
+ggplot(elections_by_counties, aes(map_id = county_fips, fill = cut(median_age, 5))) +
+  geom_map(map = county_map) +
+  scale_fill_manual(values = rev(brewer.pal(10, "RdBu")), name = "% Republican") +
+  expand_limits(x = county_map$long, y = county_map$lat) +
+  theme_map() +
+  theme(legend.position = "right") + 
+  coord_equal()
 
 ```
 

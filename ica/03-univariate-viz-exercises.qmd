@@ -13,6 +13,15 @@ Load the data first.
 ```{r}
 # Import data
 hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+
+library(tidyverse)
+library(tidyverse)
+library(maps)
+library(ggthemes)
+library(leaflet)
+library(gplots)
+library(mosaic)
+library(RColorBrewer)
 ```
 
 ## Exercise 1: Research Questions
@@ -380,7 +389,7 @@ Practice your viz skills to learn about some of the variables in one of the foll
 
 ```{r}
 # Data on students in this class
-survey <- read.csv("../data/survey.csv")
+survey <- read.csv("https://hash-mac.github.io/ds112site-f26/data/survey.csv")
 
 # World Cup data
 world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
